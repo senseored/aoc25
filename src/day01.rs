@@ -50,7 +50,6 @@ mod tests {
         let contents =
             fs::read_to_string(file_path).expect("Should have been able to read the file");
         let answer = solve(&contents);
-        // let test = populate(&contents);
 
         assert_eq!(answer, (3, 6));
     }
