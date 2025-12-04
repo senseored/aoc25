@@ -26,9 +26,9 @@ fn populate(contents: &str) -> (u32, u32) {
             let c = chars[i][j];
             if c == '@' {
                 let mut rolls = 0;
-                let dirs = dirs((i as u32, j as u32), width as u32, height as u32);
+                let dirs = dirs((i, j), width, height);
                 for dir in dirs {
-                    if chars[dir.0 as usize][dir.1 as usize] == '@' {
+                    if chars[dir.0][dir.1] == '@' {
                         rolls += 1;
                     }
                 }
@@ -49,9 +49,9 @@ fn populate(contents: &str) -> (u32, u32) {
                 let c = chars[i][j];
                 if c == '@' {
                     let mut rolls = 0;
-                    let dirs = dirs((i as u32, j as u32), width as u32, height as u32);
+                    let dirs = dirs((i, j), width, height);
                     for dir in dirs {
-                        if chars[dir.0 as usize][dir.1 as usize] == '@' {
+                        if chars[dir.0][dir.1] == '@' {
                             rolls += 1;
                         }
                     }
@@ -69,7 +69,7 @@ fn populate(contents: &str) -> (u32, u32) {
     (part1, part2)
 }
 
-fn dirs(pos: (u32, u32), width: u32, height: u32) -> Vec<(u32, u32)> {
+fn dirs(pos: (usize, usize), width: usize, height: usize) -> Vec<(usize, usize)> {
     let mut dirs = Vec::new();
     if pos.0 > 0 {
         dirs.push((pos.0 - 1, pos.1));
