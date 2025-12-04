@@ -11,8 +11,7 @@ pub fn main(file_path: &str) {
 }
 
 fn populate(contents: &str) -> (u128, u128) {
-    let mut part1: u128 = 0;
-    let mut part2: u128 = 0;
+    let (mut part1, mut part2) = (0, 0);
     let contents = contents.trim();
     contents.split(',').into_iter().for_each(|x| {
         let mut z: usize = 0;
