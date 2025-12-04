@@ -31,15 +31,22 @@ fn populate(contents: &str) -> (u128, u128) {
                 p2 = c as u128;
             }
         }
-        // println!("{} {}", p1, p2);
         part1 = (p1 * 10) + p2 + part1;
 
-        let mut p2string = String::new();
-
-        for i in 0..11 {
-            line.chars()
-                .enumerate()
-                .for_each(|(j, char)| if j < line.len() - (12 - i) {});
+        let mut numleft = 0;
+        for i in 0..12 {
+            let mut number = 0;
+            line.chars().enumerate().for_each(|(j, char)| {
+                if j < line.len() - (11 - i) {
+                    if numleft <= j {
+                        if number < char::to_digit(char, 10).unwrap() as u128 {
+                            number = char::to_digit(char, 10).unwrap() as u128;
+                            numleft = j + 1;
+                        }
+                    }
+                }
+            });
+            part2 += number * 10u128.pow(11 - i as u32);
         }
     });
 
@@ -57,6 +64,6 @@ mod tests {
             fs::read_to_string(file_path).expect("Should have been able to read the file");
         let test = populate(&contents);
 
-        assert_eq!(test, (357, 0));
+        assert_eq!(test, (357, 3121910778619));
     }
 }
