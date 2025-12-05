@@ -1,6 +1,6 @@
 use std::fs;
 pub fn main(file_path: &str) {
-    let file_path = "input/test02.txt";
+    // let file_path = "input/test02.txt";
 
     let contents = fs::read_to_string(file_path).expect("Should have been able to read the file");
 

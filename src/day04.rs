@@ -43,7 +43,7 @@ fn populate(contents: &str) -> (u32, u32) {
     let mut unchanged = false;
     while !unchanged {
         chars = p2chars.clone();
-        let mut p2check = part2;
+        let p2check = part2;
         for i in 0..height {
             for j in 0..width {
                 let c = chars[i][j];
